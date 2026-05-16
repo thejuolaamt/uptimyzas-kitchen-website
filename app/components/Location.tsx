@@ -43,7 +43,7 @@ export default function Location() {
             <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
               <div className="bg-white/90 backdrop-blur-sm rounded-xl px-6 py-4 text-center">
                 <p className="text-[#8B1E1E] font-bold text-lg">📍</p>
-                <p className="text-[#2C2C2C] font-semibold">Ondo Campus</p>
+                <p className="text-[#2C2C2C] font-semibold">Beside Eric photoshop, opposite Adeyemi Federal University of Education, Ondo</p>
                 <p className="text-[#666666] text-sm">Upright Road</p>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function Location() {
               <div>
                 <h3 className="font-bold text-[#2C2C2C] mb-1">Address</h3>
                 <p className="text-[#666666]">
-                  Ondo Campus, Upright Road
+                  Beside Eric photoshop, opposite Adeyemi Federal University of Education, Ondo.
                 </p>
                 <a
                   href="#"
@@ -160,7 +160,7 @@ export default function Location() {
                   0815 542 3980
                 </a>
                 <a
-                  href="mailto:info@uptimyzaskitchen.com"
+                  href="mailto:uptimyzask@gmail.com"
                   className="text-[#666666] hover:text-[#8B1E1E] transition-colors block"
                 >
                   info@uptimyzaskitchen.com
