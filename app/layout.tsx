@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     description:
       "Fresh Nigerian food cooked daily. Open 6AM to 10PM, right on campus.",
   },
+  verification: {
+        google: "1hXgFB9lh749DSCR9gl_bZeCIGbSFQDm2PdbsJkz30M",
+  },
 };
 
 export default function RootLayout({
