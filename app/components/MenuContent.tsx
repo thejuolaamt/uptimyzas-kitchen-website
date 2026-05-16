@@ -86,7 +86,7 @@ export default function MenuContent() {
                     {item.description}
                   </p>
                   <a
-                    href={`https://wa.me/234XXXXXXXXXX?text=I'd%20like%20to%20order%20${encodeURIComponent(item.name)}`}
+                    href={`https://wa.me/2348155423980?text=I'd%20like%20to%20order%20${encodeURIComponent(item.name)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full text-center bg-[#27AE60] text-white font-semibold text-sm px-4 py-2.5 rounded-full hover:bg-[#219a52] transition-colors"

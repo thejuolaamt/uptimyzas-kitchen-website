@@ -80,7 +80,7 @@ export default function Hero() {
             Find Us
           </a>
           <a
-            href="tel:+234XXXXXXXXXX"
+            href="tel:+2348155423980"
             className="w-full sm:w-auto bg-[#27AE60] text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-[#219a52] transition-colors text-center"
           >
             Call Now

@@ -70,14 +70,14 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <span>☎️</span>
-              <a href="tel:+234XXXXXXXXXX" className="hover:text-[#F4D03F] transition-colors">
-                +234 (XXX) XXXX XXXX
+              <a href="tel:+2348155423980" className="hover:text-[#F4D03F] transition-colors">
+                0815 542 3980
               </a>
             </li>
             <li className="flex items-center gap-2">
               <span>📧</span>
-              <a href="mailto:hello@uptimyzaskitchen.ng" className="hover:text-[#F4D03F] transition-colors">
-                hello@uptimyzaskitchen.ng
+              <a href="mailto:info@uptimyzaskitchen.com" className="hover:text-[#F4D03F] transition-colors">
+                info@uptimyzaskitchen.com
               </a>
             </li>
           </ul>

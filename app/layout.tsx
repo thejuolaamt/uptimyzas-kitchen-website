@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       "Fresh Nigerian food cooked daily. Open 6AM to 10PM, right on campus.",
   },
   verification: {
-        google: "1hXgFB9lh749DSCR9gl_bZeCIGbSFQDm2PdbsJkz30M",
+    google: "1hXgFB9lh749DSCR9gl_bZeCIGbSFQDm2PdbsJkz30M",
   },
 };
 
@@ -47,7 +47,7 @@ export default function RootLayout({
       "The most reliable, accessible student food destination in Ondo. Fresh Nigerian food cooked daily.",
     image: "https://uptimyzas-kitchen-website.vercel.app/logo.png",
     url: "https://uptimyzas-kitchen-website.vercel.app",
-    telephone: "+2347039279650",
+    telephone: "+2348155423980",
     email: "info@uptimyzaskitchen.com",
     address: {
       "@type": "PostalAddress",

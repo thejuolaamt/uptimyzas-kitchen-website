@@ -65,10 +65,10 @@ export default function ContactContent() {
                 <div>
                   <h3 className="font-bold text-[#2C2C2C] mb-1">Call Us</h3>
                   <a
-                    href="tel:+234XXXXXXXXXX"
+                    href="tel:+2348155423980"
                     className="text-[#666666] hover:text-[#8B1E1E] transition-colors"
                   >
-                    +234 (XXX) XXXX XXXX
+                    0815 542 3980
                   </a>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function ContactContent() {
                 <div>
                   <h3 className="font-bold text-[#2C2C2C] mb-1">WhatsApp</h3>
                   <a
-                    href="https://wa.me/234XXXXXXXXXX"
+                    href="https://wa.me/2348155423980"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#666666] hover:text-[#27AE60] transition-colors"
@@ -118,10 +118,10 @@ export default function ContactContent() {
                 <div>
                   <h3 className="font-bold text-[#2C2C2C] mb-1">Email</h3>
                   <a
-                    href="mailto:hello@uptimyzaskitchen.ng"
+                    href="mailto:info@uptimyzaskitchen.com"
                     className="text-[#666666] hover:text-[#8B1E1E] transition-colors"
                   >
-                    hello@uptimyzaskitchen.ng
+                    info@uptimyzaskitchen.com
                   </a>
                 </div>
               </div>
