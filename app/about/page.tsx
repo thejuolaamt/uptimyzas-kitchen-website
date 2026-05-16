@@ -64,8 +64,7 @@ export default function AboutPage() {
               when they need us.
             </p>
             <p>
-              No frills. No pretense. Just fresh Nigerian food, available daily
-              from morning till night. From first-year survival sessions to
+              From first-year survival sessions to
               final-year all-nighters, Uptimyzas Kitchen has been the spot
               students count on.
             </p>

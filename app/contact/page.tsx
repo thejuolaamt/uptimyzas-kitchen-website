@@ -4,11 +4,11 @@ import ContactContent from "../components/ContactContent";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Uptimyzas Kitchen. Call, WhatsApp, email, or send us a message. We're right here on Ondo Campus.",
+    "Get in touch with Uptimyzas Kitchen. Call, WhatsApp, email, or send us a message.",
   openGraph: {
     title: "Contact Us | Uptimyzas Kitchen",
     description:
-      "Have a question? Want to order? We'd love to hear from you.",
+      "We'd love to hear from you.",
   },
 };
 

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Menu | Uptimyzas Kitchen",
     description:
-      "Fresh Nigerian food made daily. Browse our full menu with prices.",
+      "Browse our full menu with prices, take your time.",
   },
 };
 
