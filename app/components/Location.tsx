@@ -154,16 +154,16 @@ export default function Location() {
               <div>
                 <h3 className="font-bold text-[#2C2C2C] mb-1">Contact</h3>
                 <a
-                  href="tel:+234XXXXXXXXXX"
+                  href="tel:+2348155423980"
                   className="text-[#666666] hover:text-[#8B1E1E] transition-colors block"
                 >
-                  +234 (XXX) XXXX XXXX
+                  0815 542 3980
                 </a>
                 <a
-                  href="mailto:hello@uptimyzaskitchen.ng"
+                  href="mailto:info@uptimyzaskitchen.com"
                   className="text-[#666666] hover:text-[#8B1E1E] transition-colors block"
                 >
-                  hello@uptimyzaskitchen.ng
+                  info@uptimyzaskitchen.com
                 </a>
               </div>
             </div>
