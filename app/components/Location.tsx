@@ -27,7 +27,7 @@ export default function Location() {
             Find Us
           </h2>
           <p className="text-[#666666] text-lg max-w-2xl mx-auto">
-            Right here on campus. Easy to reach, impossible to miss.
+            Easy to reach, impossible to miss.
           </p>
         </div>
 
@@ -43,8 +43,8 @@ export default function Location() {
             <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
               <div className="bg-white/90 backdrop-blur-sm rounded-xl px-6 py-4 text-center">
                 <p className="text-[#8B1E1E] font-bold text-lg">📍</p>
-                <p className="text-[#2C2C2C] font-semibold">Beside Eric photoshop, opposite Adeyemi Federal University of Education, Ondo</p>
-                <p className="text-[#666666] text-sm">Upright Road</p>
+                <p className="text-[#2C2C2C] font-semibold">Beside Eric photoshop, opposite</p> 
+                <p className="text-[#2C2C2C] font-semibold">Adeyemi Federal University of Education, Ondo</p>
               </div>
             </div>
           </div>

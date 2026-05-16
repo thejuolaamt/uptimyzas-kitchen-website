@@ -27,7 +27,7 @@ export default function CTA() {
           Ready to Eat?
         </h2>
         <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-          Fresh food, fair prices, right here on campus. Come through — we're ready for you.
+          Fresh food, fair prices, right here on campus.
         </p>
 
         {/* Buttons */}
@@ -39,7 +39,7 @@ export default function CTA() {
             Order Now
           </a>
           <a
-            href="tel:+234XXXXXXXXXX"
+            href="tel:+2348155423980"
             className="w-full sm:w-auto bg-white text-[#8B1E1E] font-bold px-8 py-4 rounded-full text-lg hover:bg-gray-100 transition-colors text-center"
           >
             Call Us

@@ -62,7 +62,7 @@ export default function Hero() {
 
         {/* Tagline */}
         <p className="text-lg md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
-          Always Fresh, Right Here. The most reliable food destination for students in Ondo.
+          The most reliable food destination in Ondo City.
         </p>
 
         {/* CTA Buttons */}

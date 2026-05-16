@@ -62,7 +62,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-sm text-gray-400">
             <li className="flex items-start gap-2">
               <span>📍</span>
-              <span>Ondo Campus, Upright Road</span>
+              <span>Beside Eric photoshop, opposite Adeyemi Federal Univeristy of Education, Ondo</span>
             </li>
             <li className="flex items-center gap-2">
               <span>🕐</span>
@@ -77,7 +77,7 @@ export default function Footer() {
             <li className="flex items-center gap-2">
               <span>📧</span>
               <a href="mailto:info@uptimyzaskitchen.com" className="hover:text-[#F4D03F] transition-colors">
-                info@uptimyzaskitchen.com
+                uptimyzask@gmail.com
               </a>
             </li>
           </ul>
@@ -96,7 +96,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
           <span>© {new Date().getFullYear()} Uptimyzas Kitchen. All rights reserved.</span>
-          <span>Ondo Campus — Fresh Food, Right Here.</span>
+          <span>Fresh Food, Right Here.</span>
         </div>
       </div>
     </footer>

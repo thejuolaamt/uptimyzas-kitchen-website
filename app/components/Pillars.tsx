@@ -18,9 +18,9 @@ export default function Pillars() {
           <circle cx="12" cy="10" r="3" />
         </svg>
       ),
-      title: "Right Here on Campus",
+      title: "Right Where You Are",
       description:
-        "No long trips. No travel stress. We're right where you are — Ondo Campus, Upright Road.",
+        "No long trips. We're right where you are. Always available for pick up and delivery withing Ondo City",
     },
     {
       icon: (
@@ -47,7 +47,7 @@ export default function Pillars() {
             Why Students Choose Us
           </h2>
           <p className="text-[#666666] text-lg max-w-2xl mx-auto">
-            Three things that make Uptimyzas Kitchen the go-to spot for students in Ondo.
+            Three things that make Uptimyzas Kitchen the go-to spot.
           </p>
         </div>
 

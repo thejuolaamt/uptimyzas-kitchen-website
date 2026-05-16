@@ -45,7 +45,7 @@ export default function FeaturedFood() {
             What's Cooking
           </h2>
           <p className="text-[#666666] text-lg max-w-2xl mx-auto">
-            Our most popular dishes, made fresh daily. Real food, real flavor — no shortcuts.
+            Our most popular dishes, made fresh daily.
           </p>
         </div>
 

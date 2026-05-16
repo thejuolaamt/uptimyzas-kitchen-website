@@ -32,7 +32,7 @@ export default function Testimonials() {
             What Students Say
           </h2>
           <p className="text-[#666666] text-lg max-w-2xl mx-auto">
-            Real reviews from real students who eat here. No fake stories — just honest food love.
+            Real reviews from real students who eat here.
           </p>
         </div>
 
