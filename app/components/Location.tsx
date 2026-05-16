@@ -163,7 +163,7 @@ export default function Location() {
                   href="mailto:uptimyzask@gmail.com"
                   className="text-[#666666] hover:text-[#8B1E1E] transition-colors block"
                 >
-                  info@uptimyzaskitchen.com
+                  uptimyzask@gmail.com
                 </a>
               </div>
             </div>
