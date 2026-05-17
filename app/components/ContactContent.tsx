@@ -118,10 +118,10 @@ export default function ContactContent() {
                 <div>
                   <h3 className="font-bold text-[#2C2C2C] mb-1">Email</h3>
                   <a
-                    href="mailto:info@uptimyzaskitchen.com"
+                    href="mailto:uptimyzask@gmail.com"
                     className="text-[#666666] hover:text-[#8B1E1E] transition-colors"
                   >
-                    info@uptimyzaskitchen.com
+                    uptimyzask@gmail.com
                   </a>
                 </div>
               </div>
