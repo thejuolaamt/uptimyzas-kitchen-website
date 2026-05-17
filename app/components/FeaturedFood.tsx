@@ -35,7 +35,6 @@ export default function FeaturedFood() {
   return (
     <section className="py-20 md:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Section heading */}
         <div className="text-center mb-14 reveal-on-scroll">
           <p className="text-[#666666] text-sm uppercase tracking-widest mb-3">What we serve</p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#2C2C2C]">
@@ -43,7 +42,6 @@ export default function FeaturedFood() {
           </h2>
         </div>
 
-        {/* Food Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredItems.map((item, index) => (
             <div
@@ -51,7 +49,6 @@ export default function FeaturedFood() {
               className="group reveal-on-scroll"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Image */}
               <div className="relative h-52 overflow-hidden rounded-2xl mb-4">
                 <Image
                   src={item.imageUrl}
@@ -61,8 +58,6 @@ export default function FeaturedFood() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
               </div>
-
-              {/* Text */}
               <div className="px-1">
                 <div className="flex items-start justify-between mb-1">
                   <h3 className="text-lg font-bold text-[#2C2C2C]">
@@ -80,7 +75,6 @@ export default function FeaturedFood() {
           ))}
         </div>
 
-        {/* View full menu link */}
         <div className="text-center mt-12 reveal-on-scroll">
           <a
             href="/menu"

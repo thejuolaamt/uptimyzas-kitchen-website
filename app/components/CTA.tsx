@@ -1,7 +1,6 @@
 export default function CTA() {
   return (
     <section className="py-24 md:py-32 bg-[#8B1E1E] relative overflow-hidden">
-      {/* Subtle warm texture overlay */}
       <div className="absolute inset-0 z-0 opacity-5">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -15,17 +14,14 @@ export default function CTA() {
       </div>
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 text-center">
-        {/* Main line — warm, direct */}
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight reveal-on-scroll">
           Ready when you are
         </h2>
 
-        {/* Follow-up */}
         <p className="text-lg md:text-xl text-white/70 mb-10 reveal-on-scroll">
           Message us on WhatsApp or walk in. Your food is waiting.
         </p>
 
-        {/* Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 reveal-on-scroll">
           <a
             href="https://wa.me/2348155423980"

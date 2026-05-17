@@ -38,9 +38,8 @@ export default function Pillars() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[#F9F9F9]">
+    <section className="py-20 md:py-28 bg-[#FDF6F0]">
       <div className="max-w-5xl mx-auto px-4">
-        {/* Section heading */}
         <div className="text-center mb-14 reveal-on-scroll">
           <p className="text-[#666666] text-sm uppercase tracking-widest mb-3">Why us</p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#2C2C2C]">
@@ -48,7 +47,6 @@ export default function Pillars() {
           </h2>
         </div>
 
-        {/* Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars.map((pillar, index) => (
             <div

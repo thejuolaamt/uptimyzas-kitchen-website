@@ -13,7 +13,6 @@ export default function HowItWorks() {
   const [hasPulsed, setHasPulsed] = useState(false);
 
   useEffect(() => {
-    // Pulse the first card once after a short delay
     const timer = setTimeout(() => {
       setHasPulsed(true);
     }, 600);
@@ -22,21 +21,19 @@ export default function HowItWorks() {
 
   function handleTap(index: number) {
     if (openIndex === index) {
-      setOpenIndex(null); // close if same card tapped
+      setOpenIndex(null);
     } else {
       setOpenIndex(index);
     }
   }
 
   return (
-    <section className="py-20 md:py-28 bg-[#F9F9F9]">
+    <section className="py-20 md:py-28 bg-[#F0F4F8]">
       <div className="max-w-3xl mx-auto px-4">
-        {/* Section heading */}
         <div className="text-center mb-14 reveal-on-scroll">
           <p className="text-[#666666] text-sm uppercase tracking-widest mb-3">How it works</p>
         </div>
 
-        {/* Steps */}
         <div className="flex flex-col md:flex-row gap-4 md:gap-5">
           {steps.map((step, index) => {
             const isOpen = openIndex === index;
@@ -55,7 +52,6 @@ export default function HowItWorks() {
                   ${showPulse ? "animate-pulseOnce" : ""}
                 `}
               >
-                {/* Shimmer on closed cards */}
                 {!isOpen && (
                   <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -skew-x-12 translate-x-[-150%] animate-shimmerMove" />
@@ -63,7 +59,6 @@ export default function HowItWorks() {
                 )}
 
                 <div className="p-5 md:p-6 flex md:flex-col items-center md:items-start gap-4 md:gap-3">
-                  {/* Number */}
                   <span
                     className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold transition-all duration-500
                       ${isOpen
@@ -75,7 +70,6 @@ export default function HowItWorks() {
                     {step.number}
                   </span>
 
-                  {/* Text */}
                   <span
                     className={`text-[#2C2C2C] font-medium transition-all duration-500
                       ${isOpen
@@ -92,13 +86,11 @@ export default function HowItWorks() {
           })}
         </div>
 
-        {/* Mobile hint */}
         <p className="text-center text-[#999] text-xs mt-4 md:hidden">
           Tap a step to reveal
         </p>
       </div>
 
-      {/* Animations */}
       <style jsx>{`
         @keyframes pulseOnce {
           0%, 100% { transform: scale(1); }
