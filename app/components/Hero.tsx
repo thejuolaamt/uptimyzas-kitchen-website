@@ -1,22 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
 export default function Hero() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    function checkOpenStatus() {
-      const now = new Date();
-      const hours = now.getHours();
-      setIsOpen(hours >= 6 && hours < 22);
-    }
-
-    checkOpenStatus();
-    const interval = setInterval(checkOpenStatus, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center bg-white overflow-hidden">
       {/* Foodie background texture — simple line vectors */}
@@ -47,24 +31,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
-        {/* Open/Closed Badge */}
-        <div className="flex items-center justify-center gap-2 mb-8">
-          <div
-            className={`flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full ${
-              isOpen
-                ? "bg-[#27AE60] text-white"
-                : "bg-red-500 text-white"
-            }`}
-          >
-            <span
-              className={`w-2 h-2 rounded-full ${
-                isOpen ? "bg-white animate-pulse" : "bg-white"
-              }`}
-            ></span>
-            {isOpen ? "Open now — closing 10pm" : "Closed — open 6am"}
-          </div>
-        </div>
-
         {/* Main line — big, bold, appetizing */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-[#2C2C2C] mb-4 leading-[1.1] tracking-tight">
           Your food<br />is ready<span className="text-[#8B1E1E]">.</span>

@@ -2,67 +2,65 @@ export default function Pillars() {
   const pillars = [
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#8B1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#8B1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10" />
           <polyline points="12 6 12 12 16 14" />
         </svg>
       ),
-      title: "Always Available",
+      title: "Fast",
       description:
-        "Open 6:00 AM to 10:00 PM daily. Reliable hours you can count on, right when you need food most.",
+        "Your food is ready before you settle in. No waiting around.",
     },
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#8B1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-          <circle cx="12" cy="10" r="3" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#8B1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 1v22" />
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
         </svg>
       ),
-      title: "Right Where You Are",
+      title: "Affordable",
       description:
-        "No long trips. We're right where you are. Always available for pick up and delivery withing Ondo City",
+        "Good food doesn't have to cost a lot. Fair prices, always.",
     },
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#8B1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
-          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
-          <line x1="6" y1="1" x2="6" y2="4" />
-          <line x1="10" y1="1" x2="10" y2="4" />
-          <line x1="14" y1="1" x2="14" y2="4" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#8B1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <path d="M16 2v4" />
+          <path d="M8 2v4" />
+          <path d="M3 10h18" />
         </svg>
       ),
-      title: "Fresh Daily",
+      title: "Every day",
       description:
-        "Every meal cooked fresh every day. No reheated food. No compromises. Just honest, hot Nigerian meals.",
+        "Monday to Sunday, 6am to 10pm. Even on Sundays.",
     },
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-[#F9F9F9]">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Section Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2C2C2C] mb-3">
-            Why Students Choose Us
+    <section className="py-20 md:py-28 bg-[#F9F9F9]">
+      <div className="max-w-5xl mx-auto px-4">
+        {/* Section heading */}
+        <div className="text-center mb-14 reveal-on-scroll">
+          <p className="text-[#666666] text-sm uppercase tracking-widest mb-3">Why us</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#2C2C2C]">
+            Three things that matter
           </h2>
-          <p className="text-[#666666] text-lg max-w-2xl mx-auto">
-            Three things that make Uptimyzas Kitchen the go-to spot.
-          </p>
         </div>
 
-        {/* Pillars Grid */}
+        {/* Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars.map((pillar, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-md transition-shadow"
+              className="text-center reveal-on-scroll"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div className="mb-4 flex justify-center">{pillar.icon}</div>
+              <div className="mb-5 flex justify-center">{pillar.icon}</div>
               <h3 className="text-xl font-bold text-[#2C2C2C] mb-3">
                 {pillar.title}
               </h3>
-              <p className="text-[#666666] leading-relaxed">
+              <p className="text-[#666666] leading-relaxed max-w-xs mx-auto">
                 {pillar.description}
               </p>
             </div>
