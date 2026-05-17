@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import MenuContent from "../components/MenuContent";
 
+const SITE_URL = "https://uptimyzas-kitchen-website.vercel.app";
+
 export const metadata: Metadata = {
   title: "Menu",
   description:
-    "Explore our full menu of fresh Nigerian food. Jollof rice, pepper soup, bread & egg, pupuru, and more. Fair prices, cooked daily.",
+    "See what we serve — Jollof rice, pepper soup, bread & egg, pupuru, and more. Fair prices, hot and fresh.",
+  alternates: {
+    canonical: `${SITE_URL}/menu`,
+  },
   openGraph: {
     title: "Menu | Uptimyzas Kitchen",
     description:
-      "Browse our full menu with prices, take your time.",
+      "Good food, served fast. Browse our menu.",
   },
 };
 

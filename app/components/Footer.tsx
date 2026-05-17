@@ -4,9 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-[#2C2C2C] text-white">
-      {/* Main Footer */}
       <div className="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-
         {/* Brand Column */}
         <div className="md:col-span-2">
           <div className="flex items-center gap-2 mb-3">
@@ -21,12 +19,11 @@ export default function Footer() {
             <span className="text-2xl font-bold text-white">Kitchen</span>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            The most reliable, accessible student food destination in Ondo.
-            Fresh Nigerian food cooked daily. Always here when you need us.
+            Good food, served fast. Right here in Ondo.
           </p>
           <div className="flex items-center gap-2 text-xs text-gray-400">
             <span>🕐</span>
-            <span>Open Daily: 6:00 AM – 10:00 PM</span>
+            <span>6am – 10pm, every day. Including Sundays.</span>
           </div>
         </div>
 
@@ -39,7 +36,7 @@ export default function Footer() {
             {[
               { label: "Home", href: "/" },
               { label: "Menu", href: "/menu" },
-              { label: "About Us", href: "/about" },
+              { label: "About", href: "/about" },
               { label: "Contact", href: "/contact" },
             ].map((link) => (
               <li key={link.href}>
@@ -54,7 +51,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact Info */}
+        {/* Find Us */}
         <div>
           <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4">
             Find Us
@@ -62,11 +59,11 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-sm text-gray-400">
             <li className="flex items-start gap-2">
               <span>📍</span>
-              <span>Beside Eric photoshop, opposite Adeyemi Federal Univeristy of Education, Ondo</span>
+              <span>Beside Eric photoshop, opposite Adeyemi Federal University, Ondo</span>
             </li>
             <li className="flex items-center gap-2">
               <span>🕐</span>
-              <span>6:00 AM – 10:00 PM Daily</span>
+              <span>6am – 10pm Daily</span>
             </li>
             <li className="flex items-center gap-2">
               <span>☎️</span>
@@ -76,7 +73,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <span>📧</span>
-              <a href="mailto:info@uptimyzaskitchen.com" className="hover:text-[#F4D03F] transition-colors">
+              <a href="mailto:uptimyzask@gmail.com" className="hover:text-[#F4D03F] transition-colors">
                 uptimyzask@gmail.com
               </a>
             </li>
@@ -96,7 +93,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
           <span>© {new Date().getFullYear()} Uptimyzas Kitchen. All rights reserved.</span>
-          <span>Fresh Food, Right Here.</span>
+          <span>Your food is ready.</span>
         </div>
       </div>
     </footer>

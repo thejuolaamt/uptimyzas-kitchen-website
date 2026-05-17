@@ -62,12 +62,7 @@ export default function Header() {
           >
             Contact
           </Link>
-          <Link
-            href="/menu"
-            className="bg-[#8B1E1E] text-white font-bold px-5 py-2 rounded-full hover:bg-[#6d1717] transition-colors"
-          >
-            Order Now
-          </Link>
+          
         </nav>
 
         {/* Mobile Hamburger */}
@@ -139,13 +134,7 @@ export default function Header() {
           >
             Contact
           </Link>
-          <Link
-            href="/menu"
-            onClick={() => setMenuOpen(false)}
-            className="bg-[#8B1E1E] text-white font-bold px-5 py-3 rounded-full text-center hover:bg-[#6d1717] transition-colors"
-          >
-            Order Now
-          </Link>
+          
         </div>
       )}
     </header>

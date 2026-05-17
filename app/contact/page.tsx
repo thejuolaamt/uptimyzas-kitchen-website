@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import ContactContent from "../components/ContactContent";
 
+const SITE_URL = "https://uptimyzas-kitchen-website.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact",
   description:
-    "Get in touch with Uptimyzas Kitchen. Call, WhatsApp, email, or send us a message.",
+    "Get in touch with Uptimyzas Kitchen. Call, WhatsApp, or walk in. Beside Eric photoshop, opposite Adeyemi Federal University, Ondo.",
+  alternates: {
+    canonical: `${SITE_URL}/contact`,
+  },
   openGraph: {
-    title: "Contact Us | Uptimyzas Kitchen",
+    title: "Contact | Uptimyzas Kitchen",
     description:
-      "We'd love to hear from you.",
+      "Message us or walk in. Your food is waiting.",
   },
 };
 
