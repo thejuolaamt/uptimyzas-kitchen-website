@@ -3,34 +3,58 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+const SITE_URL = "https://uptimyzas-kitchen-website.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+
   title: {
-    default: "Uptimyzas Kitchen — Always Fresh, Right Here.",
+    default: "Uptimyzas Kitchen — Your food is ready.",
     template: "%s | Uptimyzas Kitchen",
   },
+
   description:
-    "The most reliable, accessible student food destination in Ondo. Fresh Nigerian food cooked daily. Open 6AM to 10PM, right on campus.",
+    "Good food, served fast. Nigerian staples, fair prices, open 6am to 10pm every day. Beside Eric photoshop, opposite Adeyemi Federal University, Ondo.",
+
   keywords: [
-    "Nigerian food",
-    "student food",
-    "Ondo campus food",
-    "jollof rice",
     "Uptimyzas Kitchen",
-    "restaurant near me",
-    "Ondo restaurant",
+    "food in Ondo",
+    "restaurant Ondo",
+    "Nigerian food",
+    "jollof rice",
+    "affordable food Ondo",
   ],
+
   icons: {
     icon: "/logo.png",
   },
+
+  alternates: {
+    canonical: SITE_URL,
+  },
+
   openGraph: {
     type: "website",
     siteName: "Uptimyzas Kitchen",
-    title: "Uptimyzas Kitchen — Always Fresh, Right Here.",
+    title: "Uptimyzas Kitchen — Your food is ready.",
     description:
-      "Fresh Nigerian food cooked daily. Open 6AM to 10PM, right on campus.",
+      "Good food, served fast. Open every day, 6am to 10pm.",
+    url: SITE_URL,
   },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Uptimyzas Kitchen",
+    description: "Good food, served fast. Right here in Ondo.",
+  },
+
   verification: {
     google: "1hXgFB9lh749DSCR9gl_bZeCIGbSFQDm2PdbsJkz30M",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -44,14 +68,15 @@ export default function RootLayout({
     "@type": "Restaurant",
     name: "Uptimyzas Kitchen",
     description:
-      "The most reliable, accessible student food destination in Ondo. Fresh Nigerian food cooked daily.",
-    image: "https://uptimyzas-kitchen-website.vercel.app/logo.png",
-    url: "https://uptimyzas-kitchen-website.vercel.app",
+      "Good food, served fast. Nigerian staples, fair prices, open every day.",
+    image: `${SITE_URL}/logo.png`,
+    url: SITE_URL,
     telephone: "+2348155423980",
     email: "info@uptimyzaskitchen.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Beside Eric photoshop, opposite Adeyemi Federal University of Education, Ondo",
+      streetAddress:
+        "Beside Eric photoshop, opposite Adeyemi Federal University of Education, Ondo",
       addressLocality: "Ondo",
       addressCountry: "NG",
     },
