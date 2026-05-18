@@ -50,16 +50,19 @@ export default function AboutPage() {
             How we started
           </h2>
           <div className="text-[#666666] leading-relaxed space-y-4 text-lg">
-            <p>
-              Uptimyzas Kitchen started with one idea — make good food, serve it fast, and keep the doors open every day.
-            </p>
-            <p>
-              We're beside Eric photoshop, opposite Adeyemi Federal University. People come here because the food is hot, the price is fair, and nobody makes you wait.
-            </p>
-            <p>
-              No long talk. No gimmicks. Just good food, whenever you're ready.
-            </p>
-          </div>
+  <p>
+    Uptimyzas Kitchen started with one idea — make good food, serve it fast, and keep the doors open every day. No long talk. No gimmicks. Just good food, whenever you're ready.
+  </p>
+  <p>
+    We're beside Eric photoshop, opposite Adeyemi Federal University. People come here because the food is hot, the price is fair, and nobody makes you wait. Whether you're a student rushing between lectures, a worker on break, or just someone who wants a solid meal without stress — you'll find it here.
+  </p>
+  <p>
+    Our kitchen runs on one rule: cook like you're feeding family. Every plate leaves hot. Every portion makes sense. Every customer walks out satisfied. That's not a promise — it's just how we do things.
+  </p>
+  <p>
+    We keep the menu simple — Nigerian staples done right. Jollof rice, pepper soup, bread and egg, pupuru, and more. Nothing fancy. Just food that tastes like it should, at prices that don't hurt.
+  </p>
+</div>
         </div>
       </section>
 

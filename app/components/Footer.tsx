@@ -83,11 +83,9 @@ export default function Footer() {
 
           {/* Social Icons */}
           <div className="flex gap-3 mt-5">
-            <a href="#" className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#8B1E1E] flex items-center justify-center text-xs font-bold transition-colors" aria-label="Instagram" title="Instagram">I</a>
-            <a href="#" className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#8B1E1E] flex items-center justify-center text-xs font-bold transition-colors" aria-label="Facebook" title="Facebook">F</a>
-            <a href="#" className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#8B1E1E] flex items-center justify-center text-xs font-bold transition-colors" aria-label="TikTok" title="TikTok">T</a>
-            <a href="#" className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#8B1E1E] flex items-center justify-center text-xs font-bold transition-colors" aria-label="Twitter" title="Twitter">X</a>
-          </div>
+  <a href="https://instagram.com/uptimyzaskitchen" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#8B1E1E] flex items-center justify-center text-xs font-bold transition-colors" aria-label="Instagram">I</a>
+  <a href="https://facebook.com/uptimyzaskitcehn" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#8B1E1E] flex items-center justify-center text-xs font-bold transition-colors" aria-label="Facebook">F</a>
+</div>
         </div>
       </div>
 
