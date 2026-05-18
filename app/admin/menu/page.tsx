@@ -42,7 +42,6 @@ export default function AdminMenuPage() {
 
   useEffect(() => {
     fetchItems();
-window.location.reload();
   }, []);
 
   function resetForm() {
@@ -84,20 +83,17 @@ window.location.reload();
 
     resetForm();
     fetchItems();
-window.location.reload();
   }
 
   async function handleDelete(id: string) {
     if (!confirm("Delete this item?")) return;
     await supabase.from("menu_items").delete().eq("id", id);
     fetchItems();
-window.location.reload();
   }
 
   async function toggleAvailable(id: string, current: boolean) {
     await supabase.from("menu_items").update({ available: !current }).eq("id", id);
     fetchItems();
-window.location.reload();
   }
 
   if (loading) {
