@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const SITE_URL = "https://uptimyzas-kitchen-website.vercel.app";
+const SITE_URL = "https://www.uptimyzaskitchen.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

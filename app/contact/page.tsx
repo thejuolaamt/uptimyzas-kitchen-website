@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ContactContent from "../components/ContactContent";
 
-const SITE_URL = "https://uptimyzas-kitchen-website.vercel.app";
+const SITE_URL = "https://www.uptimyzaskitchen.com";
 
 export const metadata: Metadata = {
   title: "Contact",
