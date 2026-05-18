@@ -41,11 +41,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   const navItems = [
-    { label: "Menu", href: "/admin/menu" },
-    { label: "Categories", href: "/admin/categories" },
-    { label: "Blog", href: "/admin/blog" },
-    { label: "Popups", href: "/admin/popups" },
-  ];
+  { label: "Menu", href: "/admin/menu" },
+  { label: "Categories", href: "/admin/categories" },
+  { label: "Blog", href: "/admin/blog" },
+  { label: "Popups", href: "/admin/popups" },
+  { label: "Users", href: "/admin/users" },
+];
 
   return (
     <div className="min-h-screen bg-[#F9F9F9]">
