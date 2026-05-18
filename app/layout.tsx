@@ -48,8 +48,8 @@ export const metadata: Metadata = {
     description: "Good food, served fast. Right here in Ondo.",
   },
 
-  verification: {
-    google: "1hXgFB9lh749DSCR9gl_bZeCIGbSFQDm2PdbsJkz30M",
+    verification: {
+    google: "UtAvYysQz1zpUthKy02sye_vEpuT3p8uM5VXbjwCPG0",
   },
 
   robots: {
