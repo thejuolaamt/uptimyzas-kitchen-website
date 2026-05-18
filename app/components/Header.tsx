@@ -59,11 +59,29 @@ export default function Header() {
         {/* Desktop Right */}
         <div className="hidden md:flex items-center gap-3 flex-shrink-0">
           {user ? (
-            <div className="flex items-center gap-2">
-              <Link href="/account" className="px-3 py-2 text-[#666666] text-sm hover:text-[#8B1E1E] transition-colors">Account</Link>
-              <button onClick={handleSignOut} className="px-3 py-2 text-[#666666] text-sm hover:text-[#8B1E1E] transition-colors">Sign out</button>
-            </div>
-          ) : (
+  <div className="flex items-center gap-2">
+    {user.email === "uptimyzask@gmail.com" && (
+      <Link
+        href="/admin/menu"
+        className="px-3 py-2 text-[#8B1E1E] text-sm font-medium hover:underline transition-colors"
+      >
+        Admin
+      </Link>
+    )}
+    <Link
+      href="/account"
+      className="px-3 py-2 text-[#666666] text-sm hover:text-[#8B1E1E] transition-colors"
+    >
+      Account
+    </Link>
+    <button
+      onClick={handleSignOut}
+      className="px-3 py-2 text-[#666666] text-sm hover:text-[#8B1E1E] transition-colors"
+    >
+      Sign out
+    </button>
+  </div>
+) : (
             <Link href="/auth/login" className="px-3 py-2 text-[#666666] text-sm hover:text-[#8B1E1E] transition-colors">Sign in</Link>
           )}
 
@@ -112,11 +130,31 @@ export default function Header() {
 
             <div className="border-t border-gray-100 mt-2 pt-2">
               {user ? (
-                <>
-                  <Link href="/account" onClick={() => setMenuOpen(false)} className="px-3 py-3 text-[#2C2C2C] font-medium rounded-lg hover:bg-[#8B1E1E]/5 transition-colors block">Account</Link>
-                  <button onClick={() => { handleSignOut(); setMenuOpen(false); }} className="px-3 py-3 text-[#2C2C2C] font-medium rounded-lg hover:bg-[#8B1E1E]/5 transition-colors block w-full text-left">Sign out</button>
-                </>
-              ) : (
+  <>
+    {user.email === "uptimyzask@gmail.com" && (
+      <Link
+        href="/admin/menu"
+        onClick={() => setMenuOpen(false)}
+        className="px-3 py-3 text-[#8B1E1E] font-medium rounded-lg hover:bg-[#8B1E1E]/5 transition-colors block"
+      >
+        Admin
+      </Link>
+    )}
+    <Link
+      href="/account"
+      onClick={() => setMenuOpen(false)}
+      className="px-3 py-3 text-[#2C2C2C] font-medium rounded-lg hover:bg-[#8B1E1E]/5 transition-colors block"
+    >
+      Account
+    </Link>
+    <button
+      onClick={() => { handleSignOut(); setMenuOpen(false); }}
+      className="px-3 py-3 text-[#2C2C2C] font-medium rounded-lg hover:bg-[#8B1E1E]/5 transition-colors block w-full text-left"
+    >
+      Sign out
+    </button>
+  </>
+) : (
                 <Link href="/auth/login" onClick={() => setMenuOpen(false)} className="px-3 py-3 text-[#2C2C2C] font-medium rounded-lg hover:bg-[#8B1E1E]/5 transition-colors block">Sign in</Link>
               )}
             </div>
