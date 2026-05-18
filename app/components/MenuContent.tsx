@@ -30,17 +30,17 @@ export default function MenuContent() {
   useEffect(() => {
     async function fetchData() {
       const [menuResult, catResult] = await Promise.all([
-        supabase
-          .from("menu_items")
-          .select("*")
-          .eq("available", true)
-          .order("popular", { ascending: false }),
-        supabase
-          .from("menu_categories")
-          .select("*")
-          .order("name", { ascending: true }),
-      ]);
-
+  supabase
+    .from("menu_items")
+    .select("*")
+    .eq("available", true)
+    .order("popular", { ascending: false })
+    .limit(100),
+  supabase
+    .from("menu_categories")
+    .select("*")
+    .order("name", { ascending: true }),
+]);
       if (!menuResult.error && menuResult.data) setMenuItems(menuResult.data);
       if (!catResult.error && catResult.data) setCategories(catResult.data);
       setLoading(false);
