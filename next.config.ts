@@ -9,7 +9,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "media.istockphoto.com", // Add this
+        hostname: "media.istockphoto.com",
+      },
+      {
+        protocol: "https",
+        hostname: "wizjduvvrmaxqiesyjza.supabase.co",
       },
     ],
   },

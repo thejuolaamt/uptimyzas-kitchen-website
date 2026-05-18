@@ -15,8 +15,9 @@ export default function Footer() {
               height={48}
               className="rounded-lg"
             />
-            <span className="text-2xl font-bold text-[#8B1E1E]">Uptimyzas</span>
-            <span className="text-2xl font-bold text-white">Kitchen</span>
+            <span className="text-2xl font-bold text-white">
+              Uptimyzas<span className="text-[#8B1E1E]"> Kitchen</span>
+            </span>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
             Good food, served fast. Right here in Ondo.
@@ -30,12 +31,13 @@ export default function Footer() {
         {/* Quick Links */}
         <div>
           <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4">
-            Quick Links
+            Pages
           </h3>
           <ul className="flex flex-col gap-2">
             {[
               { label: "Home", href: "/" },
               { label: "Menu", href: "/menu" },
+              { label: "Blog", href: "/blog" },
               { label: "About", href: "/about" },
               { label: "Contact", href: "/contact" },
             ].map((link) => (

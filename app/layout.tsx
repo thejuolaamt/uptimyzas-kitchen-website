@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Popup from "./components/Popup";
 
 const SITE_URL = "https://www.uptimyzaskitchen.com";
 
@@ -37,8 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Uptimyzas Kitchen",
     title: "Uptimyzas Kitchen — Your food is ready.",
-    description:
-      "Good food, served fast. Open every day, 6am to 10pm.",
+    description: "Good food, served fast. Open every day, 6am to 10pm.",
     url: SITE_URL,
   },
 
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     description: "Good food, served fast. Right here in Ondo.",
   },
 
-    verification: {
+  verification: {
     google: "UtAvYysQz1zpUthKy02sye_vEpuT3p8uM5VXbjwCPG0",
   },
 
@@ -67,31 +67,21 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Restaurant",
     name: "Uptimyzas Kitchen",
-    description:
-      "Good food, served fast. Nigerian staples, fair prices, open every day.",
+    description: "Good food, served fast. Nigerian staples, fair prices, open every day.",
     image: `${SITE_URL}/logo.png`,
     url: SITE_URL,
     telephone: "+2348155423980",
     email: "info@uptimyzaskitchen.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress:
-        "Beside Eric photoshop, opposite Adeyemi Federal University of Education, Ondo",
+      streetAddress: "Beside Eric photoshop, opposite Adeyemi Federal University of Education, Ondo",
       addressLocality: "Ondo",
       addressCountry: "NG",
     },
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         opens: "06:00",
         closes: "22:00",
       },
@@ -108,6 +98,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Header />
+        <Popup />
         <main className="pt-16">{children}</main>
         <Footer />
       </body>
