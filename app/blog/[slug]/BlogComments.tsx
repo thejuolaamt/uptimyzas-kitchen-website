@@ -29,7 +29,18 @@ export default function BlogComments({ postId }: { postId: string }) {
       .eq("post_id", postId)
       .order("created_at", { ascending: true });
 
-    if (data) setComments(data);
+    if (data) {
+      const formatted: Comment[] = data.map((item: any) => ({
+        id: item.id,
+        content: item.content,
+        created_at: item.created_at,
+        user_id: item.user_id,
+        profiles: Array.isArray(item.profiles) && item.profiles.length > 0
+          ? item.profiles[0]
+          : null,
+      }));
+      setComments(formatted);
+    }
     setLoading(false);
   }, [postId]);
 
@@ -64,7 +75,6 @@ export default function BlogComments({ postId }: { postId: string }) {
         Comments{comments.length > 0 ? ` (${comments.length})` : ""}
       </h2>
 
-      {/* Comment form */}
       {user ? (
         <form onSubmit={handleSubmit} className="mb-10">
           <textarea
@@ -95,7 +105,6 @@ export default function BlogComments({ postId }: { postId: string }) {
         </div>
       )}
 
-      {/* Comments list */}
       {loading ? (
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
@@ -106,9 +115,7 @@ export default function BlogComments({ postId }: { postId: string }) {
           ))}
         </div>
       ) : comments.length === 0 ? (
-        <p className="text-[#666666] text-center py-8">
-          No comments yet. Be the first.
-        </p>
+        <p className="text-[#666666] text-center py-8">No comments yet. Be the first.</p>
       ) : (
         <div className="space-y-4">
           {comments.map((comment) => (
