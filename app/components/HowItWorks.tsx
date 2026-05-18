@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function HowItWorks() {
   const steps = [
@@ -9,104 +9,111 @@ export default function HowItWorks() {
     { number: "3", title: "You eat" },
   ];
 
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [hasPulsed, setHasPulsed] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const duration = 3000; // 3 seconds per step
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setHasPulsed(true);
-    }, 600);
-    return () => clearTimeout(timer);
+  const goToStep = useCallback((index: number) => {
+    setActiveIndex(index);
+    setProgress(0);
   }, []);
 
+  // Auto-rotate
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setActiveIndex((prevIndex) => (prevIndex + 1) % steps.length);
+          return 0;
+        }
+        return prev + 2; // Increment by 2 for smooth 3-second fill
+      });
+    }, 60);
+
+    return () => clearInterval(interval);
+  }, [isPaused, steps.length]);
+
   function handleTap(index: number) {
-    if (openIndex === index) {
-      setOpenIndex(null);
-    } else {
-      setOpenIndex(index);
-    }
+    setIsPaused(true);
+    goToStep(index);
+
+    // Resume auto-rotation after 5 seconds of inactivity
+    setTimeout(() => setIsPaused(false), 5000);
   }
 
   return (
     <section className="py-20 md:py-28 bg-[#F0F4F8]">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-14 reveal-on-scroll">
+      <div className="max-w-2xl mx-auto px-4">
+        <div className="text-center mb-10 reveal-on-scroll">
           <p className="text-[#666666] text-sm uppercase tracking-widest mb-3">How it works</p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4 md:gap-5">
+        {/* Steps */}
+        <div className="space-y-3 mb-3">
           {steps.map((step, index) => {
-            const isOpen = openIndex === index;
-            const isFirst = index === 0;
-            const showPulse = isFirst && !hasPulsed && openIndex === null;
+            const isActive = activeIndex === index;
 
             return (
               <button
                 key={index}
                 onClick={() => handleTap(index)}
-                className={`group relative flex-1 text-left rounded-2xl transition-all duration-500 ease-out overflow-hidden
-                  ${isOpen
-                    ? "bg-white shadow-md md:flex-[2]"
-                    : "bg-white/60 hover:bg-white shadow-sm md:flex-1"
-                  }
-                  ${showPulse ? "animate-pulseOnce" : ""}
-                `}
+                className={`w-full text-left rounded-2xl transition-all duration-500 ease-out overflow-hidden relative ${
+                  isActive
+                    ? "bg-white shadow-md"
+                    : "bg-white/40 hover:bg-white/70 shadow-sm"
+                }`}
               >
-                {!isOpen && (
-                  <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -skew-x-12 translate-x-[-150%] animate-shimmerMove" />
-                  </div>
-                )}
-
-                <div className="p-5 md:p-6 flex md:flex-col items-center md:items-start gap-4 md:gap-3">
+                <div className="p-4 md:p-5 flex items-center gap-4">
+                  {/* Number */}
                   <span
-                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold transition-all duration-500
-                      ${isOpen
-                        ? "bg-[#8B1E1E] text-white"
+                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold transition-all duration-500 ${
+                      isActive
+                        ? "bg-[#8B1E1E] text-white scale-110"
                         : "bg-[#8B1E1E]/10 text-[#8B1E1E]"
-                      }
-                    `}
+                    }`}
                   >
                     {step.number}
                   </span>
 
+                  {/* Text */}
                   <span
-                    className={`text-[#2C2C2C] font-medium transition-all duration-500
-                      ${isOpen
-                        ? "opacity-100 translate-y-0 text-base md:text-lg"
-                        : "opacity-0 translate-y-2 md:opacity-100 md:translate-y-0 text-base"
-                      }
-                    `}
+                    className={`text-[#2C2C2C] font-medium transition-all duration-500 text-base md:text-lg ${
+                      isActive
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-50 translate-x-1"
+                    }`}
                   >
                     {step.title}
                   </span>
+
+                  {/* Active indicator dot on right */}
+                  {isActive && (
+                    <span className="ml-auto w-2 h-2 rounded-full bg-[#8B1E1E] animate-pulse flex-shrink-0" />
+                  )}
                 </div>
+
+                {/* Progress bar — only on active step */}
+                {isActive && (
+                  <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gray-100">
+                    <div
+                      className="h-full bg-[#8B1E1E] transition-all duration-100 ease-linear"
+                      style={{ width: `${progress}%` }}
+                    />
+                  </div>
+                )}
               </button>
             );
           })}
         </div>
 
-        <p className="text-center text-[#999] text-xs mt-4 md:hidden">
-          Tap a step to reveal
+        {/* Hint */}
+        <p className="text-center text-[#999] text-xs mt-2">
+          {isPaused ? "Tap a step to resume" : "Auto-playing — tap any step to explore"}
         </p>
       </div>
-
-      <style jsx>{`
-        @keyframes pulseOnce {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.03); }
-        }
-        .animate-pulseOnce {
-          animation: pulseOnce 1s ease-in-out;
-        }
-        @keyframes shimmerMove {
-          0% { transform: translateX(-150%) skewX(-12deg); }
-          100% { transform: translateX(150%) skewX(-12deg); }
-        }
-        .animate-shimmerMove {
-          animation: shimmerMove 2s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 }
