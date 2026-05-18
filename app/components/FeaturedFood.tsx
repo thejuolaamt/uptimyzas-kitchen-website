@@ -1,36 +1,38 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { supabase } from "@/lib/supabase";
+
+interface MenuItem {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image_url: string;
+}
 
 export default function FeaturedFood() {
-  const featuredItems = [
-    {
-      name: "Jollof Rice",
-      description: "Party rice, done right. Hot and fresh.",
-      price: "₦800",
-      imageUrl:
-        "https://media.istockphoto.com/id/644021564/photo/jollof-rice-with-chicken-and-fried-plantain-west-african-cuisine.webp?a=1&b=1&s=612x612&w=0&k=20&c=BHwQb4K_f-CTao10uWxNmZNDxwUgect6SZqwOWUygpw=",
-    },
-    {
-      name: "Bread & Egg",
-      description: "Soft bread, golden egg. Simple.",
-      price: "₦600",
-      imageUrl:
-        "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&h=400&fit=crop",
-    },
-    {
-      name: "Pepper Soup",
-      description: "Rich, spicy broth. Warms you right up.",
-      price: "₦1,200",
-      imageUrl:
-        "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&h=400&fit=crop",
-    },
-    {
-      name: "Pupuru",
-      description: "Smooth, creamy swallow. Served hot.",
-      price: "₦1,000",
-      imageUrl:
-        "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?w=600&h=400&fit=crop",
-    },
-  ];
+  const [items, setItems] = useState<MenuItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchFeatured() {
+      const { data } = await supabase
+        .from("menu_items")
+        .select("id, name, description, price, image_url")
+        .eq("available", true)
+        .eq("popular", true)
+        .order("created_at", { ascending: false })
+        .limit(4);
+
+      if (data) setItems(data);
+      setLoading(false);
+    }
+
+    fetchFeatured();
+  }, []);
 
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -42,41 +44,57 @@ export default function FeaturedFood() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredItems.map((item, index) => (
-            <div
-              key={index}
-              className="group reveal-on-scroll"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="relative h-52 overflow-hidden rounded-2xl mb-4">
-                <Image
-                  src={item.imageUrl}
-                  alt={item.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="animate-pulse">
+                <div className="h-52 bg-gray-100 rounded-2xl mb-4"></div>
+                <div className="h-5 bg-gray-200 rounded w-24 mb-2"></div>
+                <div className="h-4 bg-gray-100 rounded w-full"></div>
               </div>
-              <div className="px-1">
-                <div className="flex items-start justify-between mb-1">
-                  <h3 className="text-lg font-bold text-[#2C2C2C]">
-                    {item.name}
-                  </h3>
-                  <span className="text-base font-bold text-[#8B1E1E]">
-                    {item.price}
-                  </span>
+            ))}
+          </div>
+        ) : items.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-[#666666]">No featured items yet.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {items.map((item, index) => (
+              <div
+                key={item.id}
+                className="group reveal-on-scroll"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative h-52 overflow-hidden rounded-2xl mb-4">
+                  <Image
+                    src={item.image_url}
+                    alt={item.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
-                <p className="text-[#666666] text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                <div className="px-1">
+                  <div className="flex items-start justify-between mb-1">
+                    <h3 className="text-lg font-bold text-[#2C2C2C]">
+                      {item.name}
+                    </h3>
+                    <span className="text-base font-bold text-[#8B1E1E]">
+                      ₦{item.price.toLocaleString()}
+                    </span>
+                  </div>
+                  <p className="text-[#666666] text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         <div className="text-center mt-12 reveal-on-scroll">
-          <a
+          <Link
             href="/menu"
             className="inline-flex items-center gap-2 text-[#8B1E1E] font-semibold hover:underline"
           >
@@ -85,7 +103,7 @@ export default function FeaturedFood() {
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
