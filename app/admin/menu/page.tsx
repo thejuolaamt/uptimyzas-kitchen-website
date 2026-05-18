@@ -15,17 +15,16 @@ interface MenuItem {
   available: boolean;
 }
 
-const categories = ["breakfast", "rice", "soups", "sides", "drinks"];
-
 export default function AdminMenuPage() {
   const [items, setItems] = useState<MenuItem[]>([]);
+  const [categories, setCategories] = useState<{ id: string; name: string; slug: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<MenuItem | null>(null);
   const [form, setForm] = useState({
     name: "",
     description: "",
     price: "",
-    category: "rice",
+    category: "",
     image_url: "",
     popular: false,
     available: true,
@@ -37,15 +36,27 @@ export default function AdminMenuPage() {
       .select("*")
       .order("created_at", { ascending: false });
     if (data) setItems(data);
-    setLoading(false);
+  }
+
+  async function fetchCategories() {
+    const { data } = await supabase
+      .from("menu_categories")
+      .select("*")
+      .order("name", { ascending: true });
+    if (data) {
+      setCategories(data);
+      if (!form.category) setForm((prev) => ({ ...prev, category: data[0]?.slug || "" }));
+    }
   }
 
   useEffect(() => {
     fetchItems();
+    fetchCategories();
+    setLoading(false);
   }, []);
 
   function resetForm() {
-    setForm({ name: "", description: "", price: "", category: "rice", image_url: "", popular: false, available: true });
+    setForm({ name: "", description: "", price: "", category: categories[0]?.slug || "", image_url: "", popular: false, available: true });
     setEditing(null);
   }
 
@@ -145,7 +156,7 @@ export default function AdminMenuPage() {
             className="px-4 py-2.5 rounded-xl border border-gray-200 outline-none focus:border-[#8B1E1E]"
           >
             {categories.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
+              <option key={cat.id} value={cat.slug}>{cat.name}</option>
             ))}
           </select>
           <textarea

@@ -13,8 +13,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   useEffect(() => {
     async function checkAuth() {
       const { data } = await supabase.auth.getUser();
-      // Only allow your email
-      if (data.user?.email === "uptimyzask@gmail.com") {
+      if (data.user?.email?.toLowerCase() === "uptimyzask@gmail.com") {
         setAuthorized(true);
       }
       setLoading(false);
@@ -43,6 +42,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     { label: "Menu", href: "/admin/menu" },
+    { label: "Categories", href: "/admin/categories" },
     { label: "Blog", href: "/admin/blog" },
     { label: "Popups", href: "/admin/popups" },
   ];

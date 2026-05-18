@@ -15,35 +15,38 @@ interface MenuItem {
   available: boolean;
 }
 
-const categories = [
-  { id: "all", label: "All" },
-  { id: "breakfast", label: "Breakfast" },
-  { id: "rice", label: "Rice" },
-  { id: "soups", label: "Soups" },
-  { id: "sides", label: "Sides" },
-  { id: "drinks", label: "Drinks" },
-];
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
 
 export default function MenuContent() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchMenu() {
-      const { data, error } = await supabase
-        .from("menu_items")
-        .select("*")
-        .eq("available", true)
-        .order("popular", { ascending: false });
+    async function fetchData() {
+      const [menuResult, catResult] = await Promise.all([
+        supabase
+          .from("menu_items")
+          .select("*")
+          .eq("available", true)
+          .order("popular", { ascending: false }),
+        supabase
+          .from("menu_categories")
+          .select("*")
+          .order("name", { ascending: true }),
+      ]);
 
-      if (!error && data) {
-        setMenuItems(data);
-      }
+      if (!menuResult.error && menuResult.data) setMenuItems(menuResult.data);
+      if (!catResult.error && catResult.data) setCategories(catResult.data);
       setLoading(false);
     }
 
-    fetchMenu();
+    fetchData();
   }, []);
 
   const filteredItems =
@@ -79,17 +82,27 @@ export default function MenuContent() {
       <div className="sticky top-16 z-40 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-2 overflow-x-auto py-3">
+            <button
+              onClick={() => setActiveCategory("all")}
+              className={`px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                activeCategory === "all"
+                  ? "bg-[#8B1E1E] text-white"
+                  : "bg-gray-100 text-[#666666] hover:bg-gray-200"
+              }`}
+            >
+              All
+            </button>
             {categories.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => setActiveCategory(cat.slug)}
                 className={`px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                  activeCategory === cat.id
+                  activeCategory === cat.slug
                     ? "bg-[#8B1E1E] text-white"
                     : "bg-gray-100 text-[#666666] hover:bg-gray-200"
                 }`}
               >
-                {cat.label}
+                {cat.name}
               </button>
             ))}
           </div>
@@ -112,7 +125,6 @@ export default function MenuContent() {
                   key={item.id}
                   className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
                 >
-                  {/* Image */}
                   <div className="relative h-52 overflow-hidden">
                     <Image
                       src={item.image_url}
@@ -128,7 +140,6 @@ export default function MenuContent() {
                     )}
                   </div>
 
-                  {/* Content */}
                   <div className="p-5">
                     <div className="flex items-start justify-between mb-2">
                       <h3 className="text-lg font-bold text-[#2C2C2C]">
