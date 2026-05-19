@@ -1,3 +1,6 @@
+import ProgressBar from "./components/ProgressBar";
+import { NavigationEvents } from "./components/NavigationEvents";
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";

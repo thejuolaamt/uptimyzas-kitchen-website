@@ -82,6 +82,8 @@ export default function Testimonials() {
     setShowForm(true);
   }
 
+  if (loading) return null;
+
   return (
     <section className="py-20 md:py-28 bg-white">
       <div className="max-w-4xl mx-auto px-4">
@@ -93,21 +95,7 @@ export default function Testimonials() {
         </div>
 
         {/* Reviews */}
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-[#F9F9F9] rounded-2xl p-6 animate-pulse">
-                <div className="flex gap-1 mb-3">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <div key={s} className="w-4 h-4 bg-gray-200 rounded" />
-                  ))}
-                </div>
-                <div className="w-full h-16 bg-gray-100 rounded mb-3" />
-                <div className="w-20 h-4 bg-gray-200 rounded" />
-              </div>
-            ))}
-          </div>
-        ) : reviews.length === 0 ? (
+        {reviews.length === 0 ? (
           <div className="text-center py-12 reveal-on-scroll">
             <p className="text-4xl mb-4">🍛</p>
             <p className="text-[#666666] text-lg mb-2">No reviews yet</p>
@@ -130,7 +118,6 @@ export default function Testimonials() {
                 className="bg-[#F9F9F9] rounded-2xl p-6 reveal-on-scroll"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Stars */}
                 <div className="flex gap-0.5 mb-3">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <svg
@@ -145,19 +132,16 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                {/* Comment */}
                 <p className="text-[#2C2C2C] leading-relaxed mb-4 text-sm">
                   "{review.comment}"
                 </p>
 
-                {/* Name */}
                 <p className="text-[#666666] text-xs font-medium">— {review.name}</p>
               </div>
             ))}
           </div>
         )}
 
-        {/* Leave review button (always visible when reviews exist) */}
         {reviews.length > 0 && !showForm && (
           <div className="text-center mt-8 reveal-on-scroll">
             <button
@@ -169,19 +153,16 @@ export default function Testimonials() {
           </div>
         )}
 
-        {/* Submitted confirmation */}
         {submitted && (
           <div className="text-center mt-4 reveal-on-scroll">
             <p className="text-[#27AE60] text-sm font-medium">Thanks for your review!</p>
           </div>
         )}
 
-        {/* Review form */}
         {showForm && (
           <div className="max-w-md mx-auto mt-8 bg-[#F9F9F9] rounded-2xl p-6 reveal-on-scroll">
             <h3 className="font-bold text-[#2C2C2C] mb-4 text-center">Leave a review</h3>
 
-            {/* Star selector */}
             <div className="flex justify-center gap-1 mb-4">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button

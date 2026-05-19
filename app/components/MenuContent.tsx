@@ -54,15 +54,9 @@ export default function MenuContent() {
       ? menuItems
       : menuItems.filter((item) => item.category === activeCategory);
 
-  if (loading) {
-    return (
-      <section className="pt-24 pb-12">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-[#666666]">Loading menu...</p>
-        </div>
-      </section>
-    );
-  }
+ if (loading) {
+  return null;
+}
 
   return (
     <>
