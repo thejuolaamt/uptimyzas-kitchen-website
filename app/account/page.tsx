@@ -57,16 +57,18 @@ export default function AccountPage() {
 
   async function handleSave(e: React.FormEvent) {
     e.preventDefault();
-    if (loading) {
-  return (/* skeleton */);
-}
+    if (!user) return;
 
-if (!user) {
-  window.location.href = "/auth/login";
-  return null;
-}
+    setSaving(true);
+    setSaved(false);
 
-return (/* account page */);
+    await supabase.from("profiles").upsert({
+      id: user.id,
+      full_name: fullName,
+      phone: phone,
+      updated_at: new Date().toISOString(),
+    });
+
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
@@ -92,20 +94,8 @@ return (/* account page */);
   }
 
   if (!user) {
-    return (
-      <section className="pt-24 pb-16 min-h-screen bg-[#F9F9F9]">
-        <div className="max-w-md mx-auto px-4 text-center">
-          <h1 className="text-2xl font-bold text-[#2C2C2C] mb-4">Your account</h1>
-          <p className="text-[#666666] mb-6">Sign in to see your account details.</p>
-          <Link
-            href="/auth/login"
-            className="inline-block bg-[#8B1E1E] text-white font-medium px-6 py-3 rounded-full hover:bg-[#6d1717] transition-colors"
-          >
-            Sign in
-          </Link>
-        </div>
-      </section>
-    );
+    window.location.href = "/auth/login";
+    return null;
   }
 
   const initial = (fullName || user.email || "U")[0].toUpperCase();
@@ -113,7 +103,6 @@ return (/* account page */);
   return (
     <section className="pt-24 pb-16 min-h-screen bg-[#F9F9F9]">
       <div className="max-w-2xl mx-auto px-4">
-        {/* Avatar + Name */}
         <div className="text-center mb-10">
           <div className="w-28 h-28 rounded-full bg-[#8B1E1E] flex items-center justify-center text-white text-4xl font-bold mx-auto mb-4 shadow-lg">
             {initial}
@@ -122,7 +111,6 @@ return (/* account page */);
           <p className="text-[#666666] text-sm">{user.email}</p>
         </div>
 
-        {/* Tabs */}
         <div className="flex justify-center gap-2 mb-8">
           <button
             onClick={() => setActiveTab("profile")}
@@ -146,7 +134,6 @@ return (/* account page */);
           </button>
         </div>
 
-        {/* Profile Tab */}
         {activeTab === "profile" && (
           <div className="bg-white rounded-2xl p-6 shadow-sm">
             <form onSubmit={handleSave} className="space-y-4">
@@ -181,7 +168,6 @@ return (/* account page */);
           </div>
         )}
 
-        {/* Orders Tab */}
         {activeTab === "orders" && (
           <div>
             {ordersLoading ? (
@@ -197,11 +183,8 @@ return (/* account page */);
               <div className="bg-white rounded-2xl p-10 text-center">
                 <p className="text-4xl mb-4">📋</p>
                 <p className="text-[#666666] text-lg mb-2">No orders yet</p>
-                <p className="text-[#999] text-sm mb-6">When you place an order, it'll show up here.</p>
-                <Link
-                  href="/menu"
-                  className="inline-block bg-[#8B1E1E] text-white font-medium px-6 py-3 rounded-full hover:bg-[#6d1717] transition-colors"
-                >
+                <p className="text-[#999] text-sm mb-6">When you place an order, it will show up here.</p>
+                <Link href="/menu" className="inline-block bg-[#8B1E1E] text-white font-medium px-6 py-3 rounded-full hover:bg-[#6d1717] transition-colors">
                   Browse menu
                 </Link>
               </div>
@@ -212,11 +195,7 @@ return (/* account page */);
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-xs text-[#999]">
                         {new Date(order.created_at).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                          hour: "2-digit",
-                          minute: "2-digit",
+                          year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit",
                         })}
                       </span>
                       <span className={`text-xs font-medium px-3 py-1 rounded-full ${
@@ -247,16 +226,12 @@ return (/* account page */);
           </div>
         )}
 
-        {/* Quick links */}
         <div className="mt-6 bg-white rounded-2xl p-6 shadow-sm space-y-3">
           <Link href="/menu" className="block text-[#2C2C2C] hover:text-[#8B1E1E] transition-colors font-medium">See the menu →</Link>
           <Link href="/blog" className="block text-[#2C2C2C] hover:text-[#8B1E1E] transition-colors font-medium">Read our blog →</Link>
         </div>
 
-        <button
-          onClick={handleSignOut}
-          className="w-full mt-4 text-[#666666] text-sm py-3 hover:text-[#8B1E1E] transition-colors"
-        >
+        <button onClick={handleSignOut} className="w-full mt-4 text-[#666666] text-sm py-3 hover:text-[#8B1E1E] transition-colors">
           Sign out
         </button>
       </div>
