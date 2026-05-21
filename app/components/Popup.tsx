@@ -77,14 +77,14 @@ export default function Popup() {
         aria-hidden="true"
       />
 
-      {/* Popup card */}
+      {/* Popup card — centered on all devices */}
       <div
-        className="fixed z-[101] bottom-0 left-0 right-0 md:bottom-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:max-w-sm w-full animate-slideUp md:animate-fadeIn"
+        className="fixed z-[101] inset-0 flex items-center justify-center p-4"
         role="dialog"
         aria-modal="true"
         aria-labelledby="popup-title"
       >
-        <div className="bg-white mx-4 md:mx-0 rounded-2xl shadow-2xl overflow-hidden relative">
+        <div className="bg-white w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden animate-fadeIn">
           {/* Close button */}
           <button
             onClick={dismiss}
@@ -97,9 +97,9 @@ export default function Popup() {
             </svg>
           </button>
 
-          {/* Image */}
+          {/* Image — with object-fit control */}
           {popup.image_url && (
-            <div className="relative w-full h-48">
+            <div className="relative w-full h-48 bg-gray-100">
               <Image
                 src={popup.image_url}
                 alt={popup.title}
@@ -139,15 +139,10 @@ export default function Popup() {
       </div>
 
       <style jsx>{`
-        @keyframes slideUp {
-          from { transform: translateY(100%); }
-          to { transform: translateY(0); }
-        }
         @keyframes fadeIn {
-          from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
-          to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
         }
-        .animate-slideUp { animation: slideUp 0.4s ease-out; }
         .animate-fadeIn { animation: fadeIn 0.3s ease-out; }
       `}</style>
     </>

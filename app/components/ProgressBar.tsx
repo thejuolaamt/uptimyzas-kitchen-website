@@ -1,47 +1,46 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function ProgressBar() {
   const pathname = usePathname();
   const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [width, setWidth] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    let progressTimer: NodeJS.Timeout;
+    // Clear any existing timers
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    function startLoading() {
-      setLoading(true);
-      setProgress(0);
+    // Start loading
+    setLoading(true);
+    setWidth(0);
 
-      progressTimer = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 85) {
-            clearInterval(progressTimer);
-            return 85;
-          }
-          const increment = Math.max(1, (85 - prev) / 10);
-          return Math.min(85, prev + increment);
-        });
-      }, 150);
-    }
+    // Realistic progress: fast start, slow middle, pause near end
+    let progress = 0;
+    intervalRef.current = setInterval(() => {
+      progress += Math.random() * 15 + 5;
+      if (progress > 90) {
+        progress = 90;
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      }
+      setWidth(progress);
+    }, 200);
 
-    function finishLoading() {
-      clearInterval(progressTimer);
-      setProgress(100);
-      timer = setTimeout(() => {
+    // Mark as complete when page actually renders
+    timeoutRef.current = setTimeout(() => {
+      setWidth(100);
+      setTimeout(() => {
         setLoading(false);
-      }, 400);
-    }
-
-    startLoading();
-    finishLoading();
+      }, 300);
+    }, 800);
 
     return () => {
-      clearTimeout(timer);
-      clearInterval(progressTimer);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [pathname]);
 
@@ -49,16 +48,22 @@ export default function ProgressBar() {
 
   return (
     <>
-      <div className="fixed inset-0 z-[190] bg-white/60 backdrop-blur-sm transition-opacity duration-300" />
+      {/* Dimmed background overlay */}
+      <div className="fixed inset-0 z-[190] bg-white/50 backdrop-blur-sm transition-opacity duration-200" />
+
+      {/* Centered loader */}
       <div className="fixed inset-0 z-[200] flex items-center justify-center pointer-events-none">
         <div className="w-56 md:w-64 flex flex-col items-center gap-3">
+          {/* Progress bar */}
           <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#8B1E1E] rounded-full transition-all duration-200 ease-out"
-              style={{ width: `${progress}%` }}
+              className="h-full bg-[#8B1E1E] rounded-full transition-all duration-150 ease-out"
+              style={{ width: `${width}%` }}
             />
           </div>
-          <p className="text-[#8B1E1E] text-xs font-medium tracking-wider uppercase animate-pulse">
+
+          {/* Brand text */}
+          <p className="text-[#8B1E1E] text-xs font-medium tracking-wider uppercase">
             Uptimyzas Kitchen
           </p>
         </div>

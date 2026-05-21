@@ -68,12 +68,13 @@ export default function FeaturedFood() {
               >
                 <div className="relative h-52 overflow-hidden rounded-2xl mb-4">
                   <Image
-                    src={item.image_url}
-                    alt={item.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
+  src={item.image_url}
+  alt={item.name}
+  fill
+  className="object-cover group-hover:scale-105 transition-transform duration-500"
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+  priority={index === 0}
+/>
                 </div>
                 <div className="px-1">
                   <div className="flex items-start justify-between mb-1">

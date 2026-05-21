@@ -57,18 +57,16 @@ export default function AccountPage() {
 
   async function handleSave(e: React.FormEvent) {
     e.preventDefault();
-    if (!user) return;
+    if (loading) {
+  return (/* skeleton */);
+}
 
-    setSaving(true);
-    setSaved(false);
+if (!user) {
+  window.location.href = "/auth/login";
+  return null;
+}
 
-    await supabase.from("profiles").upsert({
-      id: user.id,
-      full_name: fullName,
-      phone: phone,
-      updated_at: new Date().toISOString(),
-    });
-
+return (/* account page */);
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);

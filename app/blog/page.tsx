@@ -28,13 +28,22 @@ interface BlogPost {
 }
 
 async function getPosts(): Promise<BlogPost[]> {
-  const { data } = await supabase
-    .from("blog_posts")
-    .select("id, title, slug, excerpt, image_url, created_at")
-    .eq("published", true)
-    .order("created_at", { ascending: false });
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
 
-  return data ?? [];
+    const { data } = await supabase
+      .from("blog_posts")
+      .select("id, title, slug, excerpt, image_url, created_at")
+      .eq("published", true)
+      .order("created_at", { ascending: false })
+      .abortSignal(controller.signal);
+
+    clearTimeout(timeout);
+    return data ?? [];
+  } catch {
+    return [];
+  }
 }
 
 export default async function BlogPage() {

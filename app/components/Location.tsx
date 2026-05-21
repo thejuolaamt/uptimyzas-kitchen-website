@@ -30,11 +30,12 @@ export default function Location() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="rounded-2xl overflow-hidden h-72 lg:h-full relative reveal-on-scroll">
             <Image
-              src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=600&fit=crop"
-              alt="Ondo area"
-              fill
-              className="object-cover"
-            />
+  src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=600&fit=crop"
+  alt="Ondo area"
+  fill
+  className="object-cover"
+  sizes="(max-width: 1024px) 100vw, 50vw"
+/>
             <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
               <div className="bg-white/90 backdrop-blur-sm rounded-xl px-6 py-4 text-center">
                 <p className="text-[#2C2C2C] font-semibold">Beside Eric photoshop</p>

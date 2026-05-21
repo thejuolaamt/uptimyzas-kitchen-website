@@ -50,10 +50,14 @@ export default function AdminMenuPage() {
   }
 
   useEffect(() => {
-    fetchItems();
-    fetchCategories();
+  async function load() {
+    setLoading(true);
+    await fetchItems();
+    await fetchCategories();
     setLoading(false);
-  }, []);
+  }
+  load();
+}, []);
 
   function resetForm() {
     setForm({ name: "", description: "", price: "", category: categories[0]?.slug || "", image_url: "", popular: false, available: true });

@@ -1,11 +1,11 @@
-import ProgressBar from "./components/ProgressBar";
-import { NavigationEvents } from "./components/NavigationEvents";
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Popup from "./components/Popup";
+import ProgressBar from "./components/ProgressBar";
+import { NavigationEvents } from "./components/NavigationEvents";
+import { Suspense } from "react";
 
 const SITE_URL = "https://www.uptimyzaskitchen.com";
 
@@ -43,12 +43,21 @@ export const metadata: Metadata = {
     title: "Uptimyzas Kitchen — Your food is ready.",
     description: "Good food, served fast. Open every day, 6am to 10pm.",
     url: SITE_URL,
+    images: [
+      {
+        url: `${SITE_URL}/logo.png`,
+        width: 512,
+        height: 512,
+        alt: "Uptimyzas Kitchen",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
     title: "Uptimyzas Kitchen",
     description: "Good food, served fast. Right here in Ondo.",
+    images: [`${SITE_URL}/logo.png`],
   },
 
   verification: {
@@ -102,6 +111,10 @@ export default function RootLayout({
         />
         <Header />
         <Popup />
+        <ProgressBar />
+        <Suspense fallback={null}>
+          <NavigationEvents />
+        </Suspense>
         <main className="pt-16">{children}</main>
         <Footer />
       </body>
