@@ -3,9 +3,6 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Popup from "./components/Popup";
-import ProgressBar from "./components/ProgressBar";
-import { NavigationEvents } from "./components/NavigationEvents";
-import { Suspense } from "react";
 
 const SITE_URL = "https://www.uptimyzaskitchen.com";
 
@@ -111,10 +108,7 @@ export default function RootLayout({
         />
         <Header />
         <Popup />
-        <ProgressBar />
-        <Suspense fallback={null}>
-          <NavigationEvents />
-        </Suspense>
+      
         <main className="pt-16">{children}</main>
         <Footer />
       </body>

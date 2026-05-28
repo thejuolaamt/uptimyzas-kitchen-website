@@ -7,15 +7,9 @@ const SITE_URL = "https://www.uptimyzaskitchen.com";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description:
-    "Stories, updates, and what's cooking at Uptimyzas Kitchen. Right here in Ondo.",
-  alternates: {
-    canonical: `${SITE_URL}/blog`,
-  },
-  openGraph: {
-    title: "Blog | Uptimyzas Kitchen",
-    description: "Stories from the kitchen.",
-  },
+  description: "Stories, updates, and what's cooking at Uptimyzas Kitchen. Right here in Ondo.",
+  alternates: { canonical: `${SITE_URL}/blog` },
+  openGraph: { title: "Blog | Uptimyzas Kitchen", description: "Stories from the kitchen." },
 };
 
 interface BlogPost {
@@ -54,12 +48,8 @@ export default async function BlogPage() {
       <section className="pt-24 pb-12 bg-[#F9F9F9]">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-[#666666] text-sm uppercase tracking-widest mb-3">Blog</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#2C2C2C] mb-3">
-            Stories from the kitchen
-          </h1>
-          <p className="text-[#666666] text-lg max-w-xl mx-auto">
-            What's cooking, what's new, and a few words from us.
-          </p>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#2C2C2C] mb-3">Stories from the kitchen</h1>
+          <p className="text-[#666666] text-lg max-w-xl mx-auto">What's cooking, what's new, and a few words from us.</p>
         </div>
       </section>
 
@@ -72,11 +62,7 @@ export default async function BlogPage() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {posts.map((post) => (
-                <Link
-                  key={post.id}
-                  href={`/blog/${post.slug}`}
-                  className="group block"
-                >
+                <Link key={post.id} href={`/blog/${post.slug}`} className="group block">
                   <div className="relative h-52 overflow-hidden rounded-2xl mb-4 bg-[#F9F9F9]">
                     {post.image_url ? (
                       <Image
@@ -88,24 +74,18 @@ export default async function BlogPage() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <span className="text-4xl text-[#8B1E1E] opacity-20">🍛</span>
+                        <span className="text-4xl opacity-20">🍛</span>
                       </div>
                     )}
                   </div>
                   <p className="text-[#666666] text-xs mb-2">
-                    {new Date(post.created_at).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
+                    {new Date(post.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
                   </p>
                   <h2 className="text-xl font-bold text-[#2C2C2C] mb-2 group-hover:text-[#8B1E1E] transition-colors">
                     {post.title}
                   </h2>
                   {post.excerpt && (
-                    <p className="text-[#666666] text-sm leading-relaxed line-clamp-2">
-                      {post.excerpt}
-                    </p>
+                    <p className="text-[#666666] text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
                   )}
                 </Link>
               ))}

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import { FeaturedCardSkeleton } from "./Skeleton";
 
 interface MenuItem {
   id: string;
@@ -34,6 +35,24 @@ export default function FeaturedFood() {
     fetchFeatured();
   }, []);
 
+  if (loading) {
+    return (
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <div className="w-32 h-4 bg-gray-200 rounded mx-auto mb-3 animate-pulse" />
+            <div className="w-64 h-8 bg-gray-200 rounded mx-auto animate-pulse" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[1, 2, 3, 4].map((i) => (
+              <FeaturedCardSkeleton key={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20 md:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-4">
@@ -44,17 +63,7 @@ export default function FeaturedFood() {
           </h2>
         </div>
 
-        {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="animate-pulse">
-                <div className="h-52 bg-gray-100 rounded-2xl mb-4"></div>
-                <div className="h-5 bg-gray-200 rounded w-24 mb-2"></div>
-                <div className="h-4 bg-gray-100 rounded w-full"></div>
-              </div>
-            ))}
-          </div>
-        ) : items.length === 0 ? (
+        {items.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-[#666666]">No featured items yet.</p>
           </div>
@@ -68,13 +77,12 @@ export default function FeaturedFood() {
               >
                 <div className="relative h-52 overflow-hidden rounded-2xl mb-4">
                   <Image
-  src={item.image_url}
-  alt={item.name}
-  fill
-  className="object-cover group-hover:scale-105 transition-transform duration-500"
-  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-  priority={index === 0}
-/>
+                    src={item.image_url}
+                    alt={item.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
                 <div className="px-1">
                   <div className="flex items-start justify-between mb-1">

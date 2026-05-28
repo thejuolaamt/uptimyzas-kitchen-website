@@ -1,5 +1,6 @@
 "use client";
 
+import { MenuCardSkeleton } from "./Skeleton";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
@@ -55,9 +56,18 @@ export default function MenuContent() {
       : menuItems.filter((item) => item.category === activeCategory);
 
  if (loading) {
-  return null;
+  return (
+    <section className="py-12 bg-white">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <MenuCardSkeleton key={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
-
   return (
     <>
       {/* Page Header */}

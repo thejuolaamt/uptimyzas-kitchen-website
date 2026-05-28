@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 import type { User } from "@supabase/supabase-js";
+import { TestimonialSkeleton } from "./Skeleton";
 
 interface Testimonial {
   id: string;
@@ -82,7 +83,23 @@ export default function Testimonials() {
     setShowForm(true);
   }
 
-  if (loading) return null;
+  if (loading) {
+    return (
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <div className="w-48 h-4 bg-gray-200 rounded mx-auto mb-3 animate-pulse" />
+            <div className="w-64 h-8 bg-gray-200 rounded mx-auto animate-pulse" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <TestimonialSkeleton key={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -94,7 +111,6 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        {/* Reviews */}
         {reviews.length === 0 ? (
           <div className="text-center py-12 reveal-on-scroll">
             <p className="text-4xl mb-4">🍛</p>
@@ -131,11 +147,9 @@ export default function Testimonials() {
                     </svg>
                   ))}
                 </div>
-
                 <p className="text-[#2C2C2C] leading-relaxed mb-4 text-sm">
                   "{review.comment}"
                 </p>
-
                 <p className="text-[#666666] text-xs font-medium">— {review.name}</p>
               </div>
             ))}
@@ -162,7 +176,6 @@ export default function Testimonials() {
         {showForm && (
           <div className="max-w-md mx-auto mt-8 bg-[#F9F9F9] rounded-2xl p-6 reveal-on-scroll">
             <h3 className="font-bold text-[#2C2C2C] mb-4 text-center">Leave a review</h3>
-
             <div className="flex justify-center gap-1 mb-4">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
@@ -189,7 +202,6 @@ export default function Testimonials() {
                 {rating === 5 ? "Excellent!" : rating === 4 ? "Great!" : rating === 3 ? "Good" : rating === 2 ? "Okay" : "Not great"}
               </p>
             )}
-
             <form onSubmit={handleSubmit} className="space-y-3">
               <textarea
                 value={comment}
