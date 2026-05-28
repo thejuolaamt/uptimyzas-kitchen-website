@@ -1,9 +1,42 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
+
 export default function Hero() {
+  const slides = [
+    {
+      title: "Welcome to Uptimyzas Kitchen",
+      subtitle: "We are ready to serve you.",
+    },
+    {
+      title: "Your food is ready.",
+      subtitle: "Come pick it up or we'll get it to you.",
+    },
+    {
+      title: "Everyday Energy — Refuel Here",
+      subtitle: "Get your day going with Uptimyzas Kitchen.",
+    },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const goToSlide = useCallback((index: number) => {
+    setActiveIndex(index);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isPaused, slides.length]);
+
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center bg-white overflow-hidden">
         {/* Foodie background texture */}
         <div className="absolute inset-0 z-0 opacity-[0.04]">
@@ -28,15 +61,43 @@ export default function Hero() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto pb-16">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-[#2C2C2C] mb-4 leading-[1.1] tracking-tight">
-            Your food<br />is ready<span className="text-[#8B1E1E]">.</span>
-          </h1>
+        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto pb-16 w-full">
+          {/* Slides */}
+          <div className="relative overflow-hidden mb-10">
+            <div
+              className="transition-all duration-700 ease-in-out"
+              key={activeIndex}
+            >
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-[#2C2C2C] mb-4 leading-[1.1] tracking-tight animate-fadeSlideIn">
+                {slides[activeIndex].title}
+              </h1>
+              <p className="text-base md:text-lg text-[#666666] animate-fadeSlideIn delay-200">
+                {slides[activeIndex].subtitle}
+              </p>
+            </div>
+          </div>
 
-          <p className="text-base md:text-lg text-[#666666] mb-10">
-            Come pick it up or we'll get it to you.
-          </p>
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mb-10">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  goToSlide(index);
+                  setIsPaused(true);
+                  setTimeout(() => setIsPaused(false), 6000);
+                }}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === index
+                    ? "bg-[#8B1E1E] w-8"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
 
+          {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="/menu"
@@ -53,7 +114,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom fade + shadow — creates the peek-through effect */}
+        {/* Bottom fade — peek-through effect */}
         <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
           <div className="h-6 bg-gradient-to-t from-[#FDF6F0] to-transparent" />
           <div className="h-4 bg-[#FDF6F0]" />
@@ -69,6 +130,26 @@ export default function Hero() {
           </h2>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fadeSlideIn {
+          from {
+            opacity: 0;
+            transform: translateY(12px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeSlideIn {
+          animation: fadeSlideIn 0.6s ease-out forwards;
+        }
+        .delay-200 {
+          animation-delay: 0.2s;
+          opacity: 0;
+        }
+      `}</style>
     </>
   );
 }
