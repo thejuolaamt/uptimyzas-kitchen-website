@@ -60,14 +60,7 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-3 flex-shrink-0">
           {user ? (
   <div className="flex items-center gap-2">
-    {user.email === "uptimyzask@gmail.com" && (
-      <Link
-        href="/admin/menu"
-        className="px-3 py-2 text-[#8B1E1E] text-sm font-medium hover:underline transition-colors"
-      >
-        Admin
-      </Link>
-    )}
+   
     <Link
       href="/account"
       className="px-3 py-2 text-[#666666] text-sm hover:text-[#8B1E1E] transition-colors"
