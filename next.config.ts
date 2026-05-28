@@ -17,6 +17,21 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "uptimyzas-kitchen-website.vercel.app",
+          },
+        ],
+        destination: "https://www.uptimyzaskitchen.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
