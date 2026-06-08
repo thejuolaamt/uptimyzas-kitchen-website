@@ -8,10 +8,10 @@ export const dynamic = "force-dynamic";
 const SITE_URL = "https://www.uptimyzaskitchen.com";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Stories, updates, and what's cooking at Uptimyzas Kitchen. Right here in Ondo.",
+  title: "Blog — Food Stories, Recipes & Kitchen Updates | Uptimyzas Kitchen Ondo City",
+  description: "Read stories from our kitchen, Nigerian food tips, and updates from Uptimyzas Kitchen in Ondo City.",
   alternates: { canonical: `${SITE_URL}/blog` },
-  openGraph: { title: "Blog | Uptimyzas Kitchen", description: "Stories from the kitchen." },
+  openGraph: { title: "Blog | Uptimyzas Kitchen — Ondo City", description: "Stories, recipes, and updates from the kitchen." },
 };
 
 interface BlogPost {

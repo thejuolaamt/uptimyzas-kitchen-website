@@ -4,16 +4,14 @@ import Image from "next/image";
 const SITE_URL = "https://www.uptimyzaskitchen.com";
 
 export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Uptimyzas Kitchen — good food, served fast. Right here in Ondo, open 6am to 10pm every day.",
+  title: "About Us — Local Restaurant in Ondo City Serving Nigerian Staples | Uptimyzas Kitchen",
+  description: "We serve honest Nigerian food, fast. Open every day 6am-10pm. Located beside Eric photoshop, opposite Adeyemi Federal University, Ondo City. Come eat with us!",
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
-    title: "About | Uptimyzas Kitchen",
-    description:
-      "Good food, served fast. Open every day, 6am to 10pm.",
+    title: "About Us | Uptimyzas Kitchen — Ondo City",
+    description: "Honest Nigerian food, served fast. Open 6am-10pm daily.",
   },
 };
 
@@ -27,7 +25,7 @@ export default function AboutPage() {
             About us
           </h1>
           <p className="text-[#666666] text-lg max-w-xl mx-auto">
-            Good food, no pretense. Just honest meals served hot, right here in Ondo.
+            Good food, no pretense. Just honest meals served hot, right here in Ondo City.
           </p>
         </div>
       </section>

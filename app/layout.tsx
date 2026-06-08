@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "Uptimyzas Kitchen — Your food is ready.",
+    default: "Uptimyzas Kitchen — Best Nigerian Food in Ondo City | Open 6am-10pm Daily",
     template: "%s | Uptimyzas Kitchen",
   },
 
   description:
-    "Good food, served fast. Nigerian staples, fair prices, open 6am to 10pm every day. Beside Eric photoshop, opposite Adeyemi Federal University, Ondo.",
+    "Good food, served fast. Nigerian staples, fair prices, open 6am to 10pm every day. Beside Eric photoshop, opposite Adeyemi Federal University, Ondo City.",
 
   keywords: [
     "Uptimyzas Kitchen",
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     "Nigerian food",
     "jollof rice",
     "affordable food Ondo",
+    "Ondo City restaurant",
   ],
 
   icons: {
@@ -37,8 +38,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Uptimyzas Kitchen",
-    title: "Uptimyzas Kitchen — Your food is ready.",
-    description: "Good food, served fast. Open every day, 6am to 10pm.",
+    title: "Uptimyzas Kitchen — Best Nigerian Food in Ondo City",
+    description: "Good food, served fast. Jollof rice, Ewa agoyin & more. Open every day, 6am to 10pm.",
     url: SITE_URL,
     images: [
       {
@@ -52,8 +53,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Uptimyzas Kitchen",
-    description: "Good food, served fast. Right here in Ondo.",
+    title: "Uptimyzas Kitchen — Ondo City",
+    description: "Good food, served fast. Jollof rice, Ewa agoyin & more.",
     images: [`${SITE_URL}/logo.png`],
   },
 
@@ -97,6 +98,16 @@ export default function RootLayout({
     ],
     servesCuisine: "Nigerian",
     priceRange: "₦500 - ₦10,000",
+    sameAs: [
+      "https://instagram.com/uptimyzaskitchen",
+      "https://facebook.com/uptimyzaskitcehn",
+      "https://www.youtube.com/@UPTIMYZASKITCHEN"
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "12"
+    }
   };
 
   return (
